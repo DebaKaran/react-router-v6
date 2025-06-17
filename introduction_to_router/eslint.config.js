@@ -8,8 +8,10 @@ import { defineConfig } from "eslint/config";
 export default defineConfig([
   {
     files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
-    plugins: { js, react: pluginReact },
-    extends: ["js/recommended"],
+    //plugins: { js, react: pluginReact },
+    //extends: ["js/recommended"],
+    plugins: { react: pluginReact },
+   ...js.configs.recommended,
     languageOptions: {
       globals: globals.browser
     },

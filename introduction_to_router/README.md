@@ -162,3 +162,36 @@ Now works with: npm run lint
   - `typescript-eslint`
   - `eslint-plugin-react`
 - Does not use `airbnb`
+
+--
+1: Installed Prettier + eslint-config-prettier + eslint-plugin-prettier
+2: Updated eslint.config.js to integrate Prettier
+3: Now Prettier formatting issues are shown as ESLint errors
+4: Can run npm run lint:fix to auto-fix both ESLint and Prettier issues
+
+--
+Prettier & Auto-formatting:
+
+This project uses Prettier integrated with ESLint to enforce consistent code style.
+
+A: You can manually run formatting with: npm run format
+B: To auto-format on file save in VS Code:
+
+B1: Install the VS Code extensions:
+
+ESLint
+
+Prettier - Code Formatter
+
+B2: Add this to .vscode/settings.json:
+
+{
+"editor.codeActionsOnSave": {
+"source.fixAll": true,
+"source.fixAll.eslint": true
+},
+"editor.formatOnSave": true,
+"eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"]
+}
+
+Now, when you save any .js, .ts, .jsx, or .tsx file, Prettier will automatically fix and format your code according to project rules.

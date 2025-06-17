@@ -86,3 +86,19 @@ You can also pass the port as a CLI argument when running vite:
 vite --port 3000
 
 or if you're using npm/yarn: npm run dev -- --port 3000
+
+4: Install ESLint and plugins:
+
+npm install -D eslint
+npm install -D eslint-plugin-react eslint-plugin-react-hooks
+npm install -D @typescript-eslint/parser @typescript-eslint/eslint-plugin
+
+5: Initialize ESLint config: npx eslint --init
+
+If you see this ESLint error when running npm run lint: 'react' must be in scope when using JSX react/react-in-jsx-scope
+
+It happens because React 17+ and Vite use the new "automatic JSX runtime" — import React from 'react' is no longer needed.
+You can fix this by adding the following to your ESLint config:
+
+rules: { "react/react-in-jsx-scope": "off" },
+settings: { react: { version: "detect" } }

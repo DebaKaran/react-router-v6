@@ -102,3 +102,63 @@ You can fix this by adding the following to your ESLint config:
 
 rules: { "react/react-in-jsx-scope": "off" },
 settings: { react: { version: "detect" } }
+
+-- Airbnb JS Style Guide
+
+ESLint Installation Notes (React + Vite + SWC + TypeScript):
+
+1: This project uses Vite + React + TypeScript + SWC template, which already installs:
+
+A: @typescript-eslint/eslint-plugin@8.34.1
+
+B: @typescript-eslint/parser@8.34.1
+
+2: Tried installing Airbnb config → Failed due to version conflicts (Airbnb requires older ESLint v8.x, project uses ESLint v9.x)
+
+Example error:
+peer eslint@"^7.32.0 || ^8.2.0" from eslint-config-airbnb@19.0.4
+
+3: Tried installing eslint-config-standard-with-typescript → Failed due to version conflicts (requires older @typescript-eslint v6.x, project uses v8.34.1)
+
+Example error:
+peer @typescript-eslint/eslint-plugin@"^6.4.0" from eslint-config-standard-with-typescript@43.0.1
+
+Reason: Vite + SWC template is very new, many configs are not yet compatible with the latest eslint + typescript-eslint
+
+4: Downgrading ESLint or typescript-eslint caused new conflicts
+
+Not compatible with Vite 5 + SWC setup.
+
+Would break other tooling or create more upgrade issues.
+
+5: Final Working Solution:
+Installed only what’s needed to lint React + TypeScript in a Vite+SWC setup:
+
+npm install -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-react
+
+Then, created .eslintrc.json:
+
+{
+"extends": [
+"eslint:recommended",
+"plugin:@typescript-eslint/recommended",
+"plugin:react/recommended"
+],
+"parser": "@typescript-eslint/parser",
+"parserOptions": {
+"project": "./tsconfig.json"
+},
+"plugins": ["@typescript-eslint", "react"],
+"rules": {}
+}
+
+Now works with: npm run lint
+
+-- Using ESLint v9 config format (eslint.config.js) — not .eslintrc.json
+
+- Using ESLint v9 (`eslint.config.js`)
+- Based on:
+  - `@eslint/js` recommended
+  - `typescript-eslint`
+  - `eslint-plugin-react`
+- Does not use `airbnb`

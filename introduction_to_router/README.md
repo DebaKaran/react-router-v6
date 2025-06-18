@@ -208,3 +208,8 @@ This project uses Prettier with the following config:
   "printWidth": 100
 }
 ```
+
+### Line endings
+
+1: This project uses LF (`\n`) line endings for cross-platform consistency.
+2: If you're on Windows, configure your editor to use LF (via .editorconfig or VSCode settings).

@@ -14,22 +14,22 @@ export default defineConfig([
     plugins: {
       react: pluginReact,
       prettier: pluginPrettier,
-      'unused-imports': pluginUnusedImports,
+      'unused-imports': pluginUnusedImports
     },
     languageOptions: {
-      globals: globals.browser,
+      globals: globals.browser
     },
     rules: {
       ...pluginReact.configs.flat.recommended.rules,
       'react/react-in-jsx-scope': 'off',
       '@typescript-eslint/no-unused-vars': 'warn',
       'prettier/prettier': 'error',
-      'unused-imports/no-unused-imports': 'error',
+      'unused-imports/no-unused-imports': 'error'
     },
     settings: {
       react: {
-        version: 'detect',
-      },
-    },
-  },
+        version: 'detect'
+      }
+    }
+  }
 ]);

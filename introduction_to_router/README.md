@@ -213,3 +213,30 @@ This project uses Prettier with the following config:
 
 1: This project uses LF (`\n`) line endings for cross-platform consistency.
 2: If you're on Windows, configure your editor to use LF (via .editorconfig or VSCode settings).
+
+### React Router v6.4 Demo
+
+Install React Router: npm install react-router-dom@6.4.3
+
+Features:
+
+1: Client-side routing with React Router
+
+2: Routes:
+
+A: / → Home
+
+B: /about → About
+
+How It Works:
+
+1: main.tsx: sets up <BrowserRouter> and renders <App />
+
+2: App.tsx: defines routes using <Routes> and <Route>
+
+3: Components: Home.tsx, About.tsx
+
+4: Run the App:
+
+npm install
+npm run dev
